@@ -18,5 +18,4 @@ const ComicsPage: FC = () => (
   </>
 )
 
-
 export default ComicsPage;

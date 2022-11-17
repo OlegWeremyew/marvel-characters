@@ -99,6 +99,7 @@ const CharList: FC<any> = (props) => {
       {spinner}
       {errorMessage}
       <button
+        type='button'
         className="button button__main button__long"
         disabled={newItemsLoading}
         style={{'display': charListEnd ? 'none' : 'block'}}

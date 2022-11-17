@@ -1,23 +1,25 @@
 import {useState, useEffect, FC} from 'react';
-import PropTypes from 'prop-types';
 import useMarvelService from '../../services/MarvelService';
 import setContent from '../../utils/setContent';
 
 import './charInfo.scss';
+import {ICharacter, IComics} from "../../types";
 
-const CharInfo: FC<any> = (props) => {
-  const [character, setCharacter] = useState(null);
+interface ICharInfo {
+  charId: number
+}
 
-  const {loading, error, getCharacter, clearError, process, setProcess} = useMarvelService();
+const CharInfo: FC<ICharInfo> = ({charId}) => {
+  const [character, setCharacter] = useState<ICharacter>({} as ICharacter);
+
+  const {getCharacter, clearError, process, setProcess} = useMarvelService();
   //в зависимости от process будут рендерится разные кусочки интерфейса: заглушка, загрузка, ошибка или контент
 
   useEffect(() => {
     updateChar();
-  }, [props.charId])
+  }, [charId])
 
   const updateChar = () => {
-    const {charId} = props;
-
     if (!charId) {
       return;
     }
@@ -28,7 +30,7 @@ const CharInfo: FC<any> = (props) => {
       .then(() => setProcess('confirmed')); // состояние "подтвержденного" запроса. только когда данные уже установятся в стейт, можем передать, что в компоненте все ок, данные "подтверждены", тк действия асинхронные
   }
 
-  const onCharLoaded = (character: any) => {
+  const onCharLoaded = (character: ICharacter) => {
     setCharacter(character);
   }
 
@@ -39,7 +41,11 @@ const CharInfo: FC<any> = (props) => {
   )
 }
 
-const View: FC<any> = ({data}) => {
+interface IView {
+  data: ICharacter
+}
+
+const View: FC<IView> = ({data}) => {
   const {name, description, thumbnail, homepage, wiki, comics} = data;
   const notAvailableImg = thumbnail.includes('image_not_available');
 
@@ -66,13 +72,13 @@ const View: FC<any> = ({data}) => {
       <ul className="char__comics-list">
         {comics.length > 0 ? null : 'There`s no comics with this character.'}
         {
-          comics.map((item: any, i: number) => {
-            if (i > 9) {
+          comics.map((item: IComics, index: number) => {
+            if (index > 9) {
               return;
             }
 
             return (
-              <li key={i} className="char__comics-item">
+              <li key={index} className="char__comics-item">
                 {item.name}
               </li>
             )
@@ -81,10 +87,6 @@ const View: FC<any> = ({data}) => {
       </ul>
     </>
   )
-}
-
-CharInfo.propTypes = {
-  charId: PropTypes.number
 }
 
 export default CharInfo;
