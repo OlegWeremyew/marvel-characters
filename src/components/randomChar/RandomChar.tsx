@@ -4,16 +4,21 @@ import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
+import {ICharacter} from "../../types";
+
+interface IView {
+  character: ICharacter
+}
 
 const RandomChar: FC = () => {
-  const [character, setCharacter] = useState(null);
+  const [character, setCharacter] = useState<ICharacter | null>(null);
   const {loading, error, getCharacter, clearError} = useMarvelService();
 
   useEffect(() => {
     updateChar();
   }, [])
 
-  const onCharLoaded = (character: any) => {
+  const onCharLoaded = (character: ICharacter) => {
     setCharacter(character);
   }
 
@@ -51,7 +56,7 @@ const RandomChar: FC = () => {
   )
 }
 
-const View: FC<any> = ({character}) => {
+const View: FC<IView> = ({character}) => {
   const {name, description, thumbnail, homepage, wiki} = character;
   const notAvailableImg = thumbnail.includes('image_not_available');
 

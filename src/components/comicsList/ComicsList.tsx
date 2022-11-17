@@ -4,13 +4,15 @@ import useMarvelService from '../../services/MarvelService';
 import './comicsList.scss';
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
+import {TypeComicsList} from "../../types";
 
 const ComicsList: FC = () => {
-  const [comicsList, setComicsList] = useState<any[]>([]);
-  const [newItemsLoading, setNewItemsLoading] = useState(false);
-  const [offset, setOffset] = useState(0);
-  const [comicsEnd, setComicsEnd] = useState(false);
+  const [comicsList, setComicsList] = useState<TypeComicsList[]>([] as TypeComicsList[]);
+  const [newItemsLoading, setNewItemsLoading] = useState<boolean>(false);
+  const [offset, setOffset] = useState<number>(0);
+  const [comicsEnd, setComicsEnd] = useState<boolean>(false);
 
+  console.log(comicsList)
 
   const {loading, error, getComics} = useMarvelService();
 
@@ -25,7 +27,7 @@ const ComicsList: FC = () => {
       .then(onComicsListLoaded)
   }
 
-  const onComicsListLoaded = (newList: any) => {
+  const onComicsListLoaded = (newList: TypeComicsList[]) => {
     let end = false;
     if (newList.length < 8) {
       end = true;
@@ -36,11 +38,11 @@ const ComicsList: FC = () => {
     setComicsEnd(end);
   }
 
-  const renderComics = (arr: any) => {
-    const comics = arr.map((obj: any, i: number) => {
+  const renderComics = (arr: TypeComicsList[]) => {
+    const comics = arr.map((obj: TypeComicsList, index: number) => {
 
       return (
-        <li key={obj.id} className="comics__item">
+        <li key={`${obj.id}${index}`} className="comics__item">
           <Link to={`/comics/${obj.id}`}>
             <img src={obj.image} alt="ultimate war" className="comics__item-img"/>
             <div className="comics__item-name">{obj.name.toUpperCase()}</div>
