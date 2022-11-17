@@ -12,8 +12,6 @@ const ComicsList: FC = () => {
   const [offset, setOffset] = useState<number>(0);
   const [comicsEnd, setComicsEnd] = useState<boolean>(false);
 
-  console.log(comicsList)
-
   const {loading, error, getComics} = useMarvelService();
 
   useEffect(() => {
@@ -32,9 +30,12 @@ const ComicsList: FC = () => {
     if (newList.length < 8) {
       end = true;
     }
+
     setComicsList([...comicsList, ...newList]);
     setNewItemsLoading(false);
-    setOffset(offset + 8);
+
+    const howMuchWillBeAddedComics = 8
+    setOffset(offset + howMuchWillBeAddedComics);
     setComicsEnd(end);
   }
 
@@ -70,9 +71,10 @@ const ComicsList: FC = () => {
       {spinner}
       {errorMessage}
       <button
+        type='button'
         className="button button__main button__long"
         disabled={newItemsLoading}
-        style={{'display': comicsEnd ? 'none' : 'block'}}
+        style={{display: comicsEnd ? 'none' : 'block'}}
         onClick={() => onRequest(offset)}>
         <div className="inner">load more</div>
       </button>

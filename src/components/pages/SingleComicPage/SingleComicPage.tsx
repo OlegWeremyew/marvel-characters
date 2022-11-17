@@ -7,10 +7,15 @@ import Spinner from '../../spinner/Spinner';
 import ErrorMessage from '../../errorMessage/ErrorMessage';
 
 import './singleComicPage.scss';
+import {TypeComicsList} from "../../../types";
+
+interface IView {
+  comic: TypeComicsList
+}
 
 const SingleComicPage: FC = () => {
   const {comicId} = useParams(); //приходит из url
-  const [comic, setComic] = useState(null); //comic - объект со всеми данными о комиксЕ
+  const [comic, setComic] = useState<TypeComicsList>({} as TypeComicsList); //comic - объект со всеми данными о комиксЕ
   const {loading, error, getComic, clearError} = useMarvelService();
 
   useEffect(() => {
@@ -23,7 +28,7 @@ const SingleComicPage: FC = () => {
       .then(onComicLoaded);
   }
 
-  const onComicLoaded = (comic: any) => {
+  const onComicLoaded = (comic: TypeComicsList) => {
     setComic(comic);
   }
 
@@ -41,7 +46,7 @@ const SingleComicPage: FC = () => {
 
 }
 
-const View: FC<any> = ({comic}) => {
+const View: FC<IView> = ({comic}) => {
   const {name, description, pageCount, image, price, language} = comic;
 
   return (

@@ -9,8 +9,13 @@ export interface ICharacter {
   homepage: string
   id: number
   name: string
-  thumbnail: string
+  thumbnail: any
   wiki: string
+}
+
+export type TypeThumbnail = {
+  path: any
+  extension: string
 }
 
 export type TypeComicsList = {
