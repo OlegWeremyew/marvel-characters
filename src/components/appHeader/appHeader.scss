@@ -5,7 +5,7 @@
     padding: 15px 0;
     display: flex;
     justify-content: space-between;
-    background-color: #7b7b80;
+    background-color: $headerBg;
   }
 
   &__title {
@@ -23,7 +23,7 @@
 
       &:hover {
         background-color: $main-color-hover;
-        border: #fff 1px solid;
+        border: $white 1px solid;
         transition: all 0.3s linear;
       }
     }
@@ -51,7 +51,7 @@
 
         &:hover {
           background-color: $main-color-hover;
-          border: #fff 1px solid;
+          border: $white 1px solid;
           transition: all 0.3s linear;
         }
       }

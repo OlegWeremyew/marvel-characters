@@ -1,7 +1,10 @@
-import {Link, NavLink} from 'react-router-dom';
+import { FC } from 'react';
+
+import { Link, NavLink } from 'react-router-dom';
+
 import './appHeader.scss';
-import {FC} from "react";
-import {RoutesEnum} from "../../enum";
+
+import { RoutesEnum } from '../../enum';
 
 const AppHeader: FC = () => (
   <header className="app__header">
@@ -15,22 +18,23 @@ const AppHeader: FC = () => (
         <li className="block__button">
           <NavLink
             end
-            style={({isActive}) => ({color: isActive ? '#9f0013' : 'inherit'})}
-            to={RoutesEnum.MAIN_PAGE}>
+            style={({ isActive }) => ({ color: isActive ? '#9f0013' : 'inherit' })}
+            to={RoutesEnum.MAIN_PAGE}
+          >
             Characters
           </NavLink>
         </li>
         <li className="block__button">
           <NavLink
-            style={({isActive}) => ({color: isActive ? '#9f0013' : 'inherit'})}
-            to={RoutesEnum.COMICS}>
+            style={({ isActive }) => ({ color: isActive ? '#9f0013' : 'inherit' })}
+            to={RoutesEnum.COMICS}
+          >
             Comics
           </NavLink>
         </li>
       </ul>
     </nav>
   </header>
-)
-
+);
 
 export default AppHeader;

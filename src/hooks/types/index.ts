@@ -1,1 +1,1 @@
-export type ProcessType = "loading" | 'waiting' | 'error' | 'confirmed'
+export type ProcessType = 'loading' | 'waiting' | 'error' | 'confirmed';

@@ -2,7 +2,7 @@
 
 .button {
     min-width: 101px;
-    color: #fff;
+    color: $white;
     text-align: center;
     text-transform: uppercase;
     font-size: 14px;
@@ -47,7 +47,7 @@
     }
     &__main, &__secondary {
         &:hover {
-            color: #fff;
+            color: $white;
         }
     }
     &__secondary {

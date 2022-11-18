@@ -1,5 +1,5 @@
-import {ICharacter} from "../../../../types";
+import { ICharacter } from '../../../../types';
 
 export interface ICharInfoView {
-  data: ICharacter
+  data: ICharacter;
 }

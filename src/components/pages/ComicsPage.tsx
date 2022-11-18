@@ -1,21 +1,19 @@
-import {Helmet} from "react-helmet";
+import { FC } from 'react';
 
-import ComicsList from "../comicsList/ComicsList";
-import AppBanner from "../appBanner/AppBanner";
-import {FC} from "react";
+import { Helmet } from 'react-helmet';
+
+import AppBanner from '../appBanner/AppBanner';
+import ComicsList from '../comicsList/ComicsList';
 
 const ComicsPage: FC = () => (
   <>
     <Helmet>
-      <meta
-        name="description"
-        content="Page with the list of comics"
-      />
+      <meta name="description" content="Page with the list of comics" />
       <title>Comics page</title>
     </Helmet>
-    <AppBanner/>
-    <ComicsList/>
+    <AppBanner />
+    <ComicsList />
   </>
-)
+);
 
 export default ComicsPage;

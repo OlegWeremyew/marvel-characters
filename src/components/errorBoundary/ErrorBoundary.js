@@ -1,25 +1,29 @@
-import { Component } from "react";
-import ErrorMessage from "../errorMessage/ErrorMessage";
+import { Component } from 'react';
+
+import ErrorMessage from '../errorMessage/ErrorMessage';
+
 class ErrorBoundary extends Component {
-    state = {
-        error: false
+  // eslint-disable-next-line react/state-in-constructor
+  state = {
+    error: false,
+  };
+
+  componentDidCatch(error, errorInfo) {
+    console.log(error, errorInfo);
+
+    this.setState({
+      error: true,
+    });
+  }
+
+  render() {
+    const { state, props } = this;
+    if (state.error) {
+      return <ErrorMessage />;
     }
 
-    componentDidCatch(error, errorInfo) {
-        console.log(error, errorInfo);
-
-        this.setState({
-            error: true
-        })
-    }
-
-    render() {
-        if (this.state.error) {
-            return <ErrorMessage/>;
-        }
-
-        return this.props.children;
-    }
+    return props.children;
+  }
 }
 
 export default ErrorBoundary;

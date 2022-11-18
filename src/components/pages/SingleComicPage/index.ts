@@ -1,1 +1,1 @@
-export * from './SingleComicPage'
+export * from './SingleComicPage';

@@ -6,9 +6,11 @@
     grid-template-columns: 293px 550px auto;
     column-gap: 50px;
     align-items: start;
+    padding: 0 15px;
     &__img {
         width: 293px;
         height: 450px;
+        box-shadow: 0 5px 30px #000;
     }
     &__name {
         font-weight: bold;
@@ -32,8 +34,17 @@
         font-weight: bold;
         font-size: 18px;
         line-height: 24px;
+        transition: all 0.2s linear;
+        border: 1px solid transparent;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: transparent;
+
         &:hover {
             color: $main-color;
+            transition: all 0.2s linear;
+            border: 1px solid $main-color;
+            opacity: 0.8;
         }
     }
 }

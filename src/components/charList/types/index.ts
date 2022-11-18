@@ -1,6 +1,6 @@
-import {Nullable} from "../../../types";
+import { Nullable } from '../../../types';
 
 export interface ICharList {
-  charId: Nullable<number>
-  onCharSelected: (id: number) => void
+  charId: Nullable<number>;
+  onCharSelected: (id: number) => void;
 }

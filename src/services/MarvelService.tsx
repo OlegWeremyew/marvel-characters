@@ -1,58 +1,59 @@
-import {useHttp} from "../hooks/http.hook";
-import {ICharacterFull, IComicsFull, Undetectable} from "../types";
-import {_baseOffset} from "../constants";
+import { baseOffset } from '../constants';
+import { useHttp } from '../hooks/http.hook';
+import { ICharacterFull, IComicsFull, Undetectable } from '../types';
 
-const _apiBase = process.env.REACT_APP_BASE_URL
-const _apiKey = process.env.REACT_APP_API_KEY
-
+const apiBase = process.env.REACT_APP_BASE_URL;
+const apiKey = process.env.REACT_APP_API_KEY;
 
 const useMarvelService = () => {
-  const {loading, request, error, clearError, process, setProcess} = useHttp();
+  const { loading, request, error, clearError, process, setProcess } = useHttp();
 
-  const getAllCharacters = async (offset: number = _baseOffset) => {
-    const res = await request(`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`);
-    return res.data.results.map(_transformCharacter)
-  }
+  const transformCharacter = (character: ICharacterFull) => ({
+    id: character.id,
+    name: character.name,
+    description: character.description
+      ? `${character.description.slice(0, 210)}...`
+      : 'There`s no description for this character',
+    thumbnail: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+    homepage: character.urls[0].url,
+    wiki: character.urls[1].url,
+    comics: character.comics.items,
+  });
+
+  const getAllCharacters = async (offset: number = baseOffset) => {
+    const res = await request(`${apiBase}characters?limit=9&offset=${offset}&${apiKey}`);
+    return res.data.results.map(transformCharacter);
+  };
 
   const getCharacter = async (id: number) => {
-    const res = await request(`${_apiBase}characters/${id}?${_apiKey}`);
+    const res = await request(`${apiBase}characters/${id}?${apiKey}`);
 
-    return _transformCharacter(res.data.results[0]);
-  }
+    return transformCharacter(res.data.results[0]);
+  };
 
-  const _transformCharacter = (character: ICharacterFull) => {
-    return {
-      id: character.id,
-      name: character.name,
-      description: character.description ? `${character.description.slice(0, 210)}...` : 'There`s no description for this character',
-      thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
-      homepage: character.urls[0].url,
-      wiki: character.urls[1].url,
-      comics: character.comics.items,
-    }
-  }
+  const transformComics = (comics: IComicsFull) => ({
+    id: comics.id,
+    name: comics.title,
+    description: comics.description || 'There is no description',
+    pageCount: comics.pageCount
+      ? `${comics.pageCount} pages`
+      : 'No information about the number of pages',
+    price: comics.prices[0].price === 0 ? 'Not available' : `${comics.prices[0].price}$`,
+    image: `${comics.thumbnail.path}.${comics.thumbnail.extension}`,
+    language: comics.textObjects.language || 'en-us',
+  });
 
   const getComics = async (offset: number = 0) => {
-    const res = await request(`${_apiBase}comics?orderBy=issueNumber&limit=8&offset=${offset}&${_apiKey}`)
-    return res.data.results.map(_transformComics)
-  }
+    const res = await request(
+      `${apiBase}comics?orderBy=issueNumber&limit=8&offset=${offset}&${apiKey}`,
+    );
+    return res.data.results.map(transformComics);
+  };
 
   const getComic = async (id: Undetectable<string>) => {
-    const res = await request(`${_apiBase}comics/${id}?${_apiKey}`);
-    return _transformComics(res.data.results[0]);
-  }
-
-  const _transformComics = (comics: IComicsFull) => {
-    return {
-      id: comics.id,
-      name: comics.title,
-      description: comics.description || 'There is no description',
-      pageCount: comics.pageCount ? `${comics.pageCount} pages` : 'No information about the number of pages',
-      price: comics.prices[0].price === 0 ? 'Not available' : comics.prices[0].price + '$',
-      image: comics.thumbnail.path + '.' + comics.thumbnail.extension,
-      language: comics.textObjects.language || 'en-us',
-    }
-  }
+    const res = await request(`${apiBase}comics/${id}?${apiKey}`);
+    return transformComics(res.data.results[0]);
+  };
 
   return {
     loading,
@@ -63,8 +64,8 @@ const useMarvelService = () => {
     getAllCharacters,
     getCharacter,
     getComics,
-    getComic
+    getComic,
   };
-}
+};
 
 export default useMarvelService;

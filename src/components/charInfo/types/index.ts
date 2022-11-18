@@ -1,5 +1,5 @@
-import {Nullable} from "../../../types";
+import { Nullable } from '../../../types';
 
 export interface ICharInfo {
-  charId: Nullable<number>
+  charId: Nullable<number>;
 }
