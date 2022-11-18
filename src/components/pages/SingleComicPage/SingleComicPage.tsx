@@ -8,10 +8,7 @@ import ErrorMessage from '../../errorMessage/ErrorMessage';
 
 import './singleComicPage.scss';
 import {TypeComicsList} from "../../../types";
-
-interface IView {
-  comic: TypeComicsList
-}
+import {IView} from "./types";
 
 const SingleComicPage: FC = () => {
   const {comicId} = useParams(); //приходит из url

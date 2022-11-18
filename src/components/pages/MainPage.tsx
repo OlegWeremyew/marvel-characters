@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {FC, useState} from "react";
 import {Helmet} from "react-helmet";
 
 import RandomChar from "../randomChar/RandomChar";
@@ -7,11 +7,12 @@ import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import decoration from '../../resources/img/vision.png';
+import {Nullable} from "../../types";
 
-const MainPage = () => {
-  const [selectedChar, setChar] = useState(null);
+const MainPage:FC = () => {
+  const [selectedChar, setChar] = useState<Nullable<number>>(null);
 
-  const onCharSelected = (id) => {
+  const onCharSelected = (id: number) => {
     setChar(id);
   }
 

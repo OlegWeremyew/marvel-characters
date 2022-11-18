@@ -2,18 +2,18 @@ import Skeleton from "../components/skeleton/Skeleton";
 import Spinner from "../components/spinner/Spinner";
 import ErrorMessage from "../components/errorMessage/ErrorMessage";
 import * as React from "react";
-import {ComponentType} from "react";
+import {ICharacter, TypeComponent} from "../types";
+import {ProcessEnum} from "../enum";
 
-
-const setContent = (process: string, Component: string | ComponentType<any>, data: any) => {
+const setContent = (process: string, Component: TypeComponent, data: ICharacter) => {
   switch (process) {
-    case 'waiting':
+    case ProcessEnum.WAITING:
       return <Skeleton/>;
-    case 'loading':
+    case ProcessEnum.LOADING:
       return <Spinner/>;
-    case 'confirmed':
+    case ProcessEnum.CONFIRMED:
       return <Component data={data}/>;
-    case 'error':
+    case ProcessEnum.ERROR:
       return <ErrorMessage/>;
     default:
       throw new Error('Unexpected process state');

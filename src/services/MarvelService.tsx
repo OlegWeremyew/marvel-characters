@@ -1,5 +1,6 @@
 import {useHttp} from "../hooks/http.hook";
 import {_apiBase, _apiKey, _baseOffset} from "../constants";
+import {ICharacterFull, IComicsFull, Undetectable} from "../types";
 
 const useMarvelService = () => {
   const {loading, request, error, clearError, process, setProcess} = useHttp();
@@ -15,7 +16,7 @@ const useMarvelService = () => {
     return _transformCharacter(res.data.results[0]);
   }
 
-  const _transformCharacter = (character: any) => {
+  const _transformCharacter = (character: ICharacterFull) => {
     return {
       id: character.id,
       name: character.name,
@@ -32,12 +33,12 @@ const useMarvelService = () => {
     return res.data.results.map(_transformComics)
   }
 
-  const getComic = async (id: string | undefined) => {
+  const getComic = async (id: Undetectable<string>) => {
     const res = await request(`${_apiBase}comics/${id}?${_apiKey}`);
     return _transformComics(res.data.results[0]);
   }
 
-  const _transformComics = (comics: any) => {
+  const _transformComics = (comics: IComicsFull) => {
     return {
       id: comics.id,
       name: comics.title,

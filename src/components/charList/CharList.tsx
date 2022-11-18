@@ -7,9 +7,10 @@ import useMarvelService from '../../services/MarvelService';
 import './charList.scss';
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
+import {ICharacterFull} from "../../types";
 
 const CharList: FC<any> = (props) => {
-  const [charList, setCharList] = useState<any[]>([]);
+  const [charList, setCharList] = useState<ICharacterFull[]>([]);
   const [newItemsLoading, setNewItemsLoading] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(210);
   const [charListEnd, setCharListEnd] = useState(false);
@@ -28,15 +29,20 @@ const CharList: FC<any> = (props) => {
       .then(onCharLoaded)
   }
 
-  const onCharLoaded = (newCharList: any) => {
+  const onCharLoaded = (newCharList: ICharacterFull[]) => {
     let end = false;
-    if (newCharList.length < 9) {
+    const charsSize = 9
+
+    if (newCharList.length < charsSize) {
       end = true;
     }
 
     setCharList(charList => [...charList, ...newCharList]); //развернула старый массив персонажей и за ним добавила новый. При первичной загрузке charlist - пустой массив
     setNewItemsLoading(newItemsLoading => false);
-    setOffset(offset => offset + 9);
+
+    const howManyCharsToAdd = 9
+
+    setOffset(offset => offset + howManyCharsToAdd);
     setCharListEnd(charListEnd => end);
   }
 
@@ -44,7 +50,7 @@ const CharList: FC<any> = (props) => {
     setSelected(selected => props.charId);
   }
 
-  const itemRefs = useRef<any>([]);
+  const itemRefs = useRef<any[]>([]);
 
   const focusOnItem = (id: number) => {
     itemRefs.current.forEach((item: any) => item.classList.remove('char__item_selected'));
@@ -52,29 +58,28 @@ const CharList: FC<any> = (props) => {
     itemRefs.current[id].focus();
   }
 
-  function renderCharacters(arr: any[]) {
-    const characters = arr.map((obj: any, i: number) => (
-      <CSSTransition key={obj.id} timeout={500} classNames="char__item">
+  function renderCharacters(arr: ICharacterFull[]) {
+    const characters = arr.map((character: ICharacterFull, index: number) => (
+      <CSSTransition key={character.id} timeout={500} classNames="char__item">
         <li
           className="char__item"
           tabIndex={0}
-          ref={el => itemRefs.current[i] = el}
+          ref={el => itemRefs.current[index] = el}
           onClick={() => {
             handleClick();
-            props.onCharSelected(obj.id);
-            focusOnItem(i);
+            props.onCharSelected(character.id);
+            focusOnItem(index);
           }}
           onKeyPress={(event) => {
             if (event.key === ' ' || event.key === "Enter") {
-              props.onCharSelected(obj.id);
-              focusOnItem(i);
+              props.onCharSelected(character.id);
+              focusOnItem(index);
             }
           }}>
-
-          <img src={obj.thumbnail} alt={obj.name} style={{
-            objectFit: obj.thumbnail.includes('image_not_available') ? 'cover' : 'unset'
+          <img src={character.thumbnail} alt={character.name} style={{
+            objectFit: character.thumbnail.includes('image_not_available') ? 'cover' : 'unset'
           }}/>
-          <div className="char__name">{obj.name}</div>
+          <div className="char__name">{character.name}</div>
         </li>
       </CSSTransition>
     ));

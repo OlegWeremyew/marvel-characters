@@ -3,10 +3,14 @@ import useMarvelService from '../../services/MarvelService';
 import setContent from '../../utils/setContent';
 
 import './charInfo.scss';
-import {ICharacter, IComics} from "../../types";
+import {ICharacter, IComics, Nullable} from "../../types";
 
 interface ICharInfo {
-  charId: number
+  charId: Nullable<number>
+}
+
+interface IView {
+  data: ICharacter
 }
 
 const CharInfo: FC<ICharInfo> = ({charId}) => {
@@ -41,9 +45,6 @@ const CharInfo: FC<ICharInfo> = ({charId}) => {
   )
 }
 
-interface IView {
-  data: ICharacter
-}
 
 const View: FC<IView> = ({data}) => {
   const {name, description, thumbnail, homepage, wiki, comics} = data;

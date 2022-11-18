@@ -27,7 +27,9 @@ const ComicsList: FC = () => {
 
   const onComicsListLoaded = (newList: TypeComicsList[]) => {
     let end = false;
-    if (newList.length < 8) {
+    const comicsSize = 8
+
+    if (newList.length < comicsSize) {
       end = true;
     }
 
@@ -40,14 +42,14 @@ const ComicsList: FC = () => {
   }
 
   const renderComics = (arr: TypeComicsList[]) => {
-    const comics = arr.map((obj: TypeComicsList, index: number) => {
+    const comics = arr.map((comic: TypeComicsList, index: number) => {
 
       return (
-        <li key={`${obj.id}${index}`} className="comics__item">
-          <Link to={`/comics/${obj.id}`}>
-            <img src={obj.image} alt="ultimate war" className="comics__item-img"/>
-            <div className="comics__item-name">{obj.name.toUpperCase()}</div>
-            <div className="comics__item-price">{obj.price}</div>
+        <li key={`${comic.id}${index}`} className="comics__item">
+          <Link to={`/comics/${comic.id}`}>
+            <img src={comic.image} alt="ultimate war" className="comics__item-img"/>
+            <div className="comics__item-name">{comic.name.toUpperCase()}</div>
+            <div className="comics__item-price">{comic.price}</div>
           </Link>
         </li>
       )
@@ -83,4 +85,3 @@ const ComicsList: FC = () => {
 }
 
 export default ComicsList;
-
