@@ -1,11 +1,15 @@
 import {useHttp} from "../hooks/http.hook";
-import {_apiBase, _apiKey, _baseOffset} from "../constants";
 import {ICharacterFull, IComicsFull, Undetectable} from "../types";
+import {_baseOffset} from "../constants";
+
+const _apiBase = process.env.REACT_APP_BASE_URL
+const _apiKey = process.env.REACT_APP_API_KEY
+
 
 const useMarvelService = () => {
   const {loading, request, error, clearError, process, setProcess} = useHttp();
 
-  const getAllCharacters = async (offset = _baseOffset) => {
+  const getAllCharacters = async (offset: number = _baseOffset) => {
     const res = await request(`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`);
     return res.data.results.map(_transformCharacter)
   }

@@ -1,5 +1,4 @@
 import {useState, useEffect, useRef, FC} from 'react';
-import PropTypes from 'prop-types';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import useMarvelService from '../../services/MarvelService';
@@ -7,14 +6,15 @@ import useMarvelService from '../../services/MarvelService';
 import './charList.scss';
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
-import {ICharacterFull} from "../../types";
+import {ICharacterFull, Nullable} from "../../types";
+import {ICharList} from "./types";
 
-const CharList: FC<any> = (props) => {
-  const [charList, setCharList] = useState<ICharacterFull[]>([]);
+const CharList: FC<ICharList> = ({charId, onCharSelected}) => {
+  const [charList, setCharList] = useState<ICharacterFull[]>([] as ICharacterFull[]);
   const [newItemsLoading, setNewItemsLoading] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(210);
-  const [charListEnd, setCharListEnd] = useState(false);
-  const [selected, setSelected] = useState(null); //для активного стиля
+  const [charListEnd, setCharListEnd] = useState<boolean>(false);
+  const [selected, setSelected] = useState<Nullable<number>>(null); //для активного стиля
 
   const {loading, error, getAllCharacters} = useMarvelService();
 
@@ -47,7 +47,7 @@ const CharList: FC<any> = (props) => {
   }
 
   const handleClick = () => {
-    setSelected(selected => props.charId);
+    setSelected(selected => charId);
   }
 
   const itemRefs = useRef<any[]>([]);
@@ -67,18 +67,22 @@ const CharList: FC<any> = (props) => {
           ref={el => itemRefs.current[index] = el}
           onClick={() => {
             handleClick();
-            props.onCharSelected(character.id);
+            onCharSelected(character.id);
             focusOnItem(index);
           }}
           onKeyPress={(event) => {
             if (event.key === ' ' || event.key === "Enter") {
-              props.onCharSelected(character.id);
+              onCharSelected(character.id);
               focusOnItem(index);
             }
           }}>
-          <img src={character.thumbnail} alt={character.name} style={{
-            objectFit: character.thumbnail.includes('image_not_available') ? 'cover' : 'unset'
-          }}/>
+          <img
+            src={character.thumbnail}
+            alt={character.name}
+            style={{
+              objectFit: character.thumbnail.includes('image_not_available') ? 'cover' : 'unset'
+            }}
+          />
           <div className="char__name">{character.name}</div>
         </li>
       </CSSTransition>
@@ -107,7 +111,9 @@ const CharList: FC<any> = (props) => {
         type='button'
         className="button button__main button__long"
         disabled={newItemsLoading}
-        style={{'display': charListEnd ? 'none' : 'block'}}
+        style={{
+          display: charListEnd ? 'none' : 'block'
+        }}
         onClick={() => {
           onRequest(offset)
         }}>
@@ -117,9 +123,4 @@ const CharList: FC<any> = (props) => {
   )
 }
 
-CharList.propTypes = {
-  onCharSelected: PropTypes.func.isRequired
-}
-
 export default CharList;
-

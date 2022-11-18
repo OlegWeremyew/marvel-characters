@@ -9,7 +9,7 @@ import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 import decoration from '../../resources/img/vision.png';
 import {Nullable} from "../../types";
 
-const MainPage:FC = () => {
+const MainPage: FC = () => {
   const [selectedChar, setChar] = useState<Nullable<number>>(null);
 
   const onCharSelected = (id: number) => {

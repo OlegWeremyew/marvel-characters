@@ -1,31 +1,68 @@
 @import '../../style/variables.scss';
 
 .app {
-    &__header {
-        display: flex;
-        justify-content: space-between;
+  &__header {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #7b7b80;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 37px;
+
+    .title__button {
+      margin-left: 10px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      background-color: transparent;
+      border: transparent 1px solid;
+      transition: all 0.3s linear;
+
+      &:hover {
+        background-color: $main-color-hover;
+        border: #fff 1px solid;
+        transition: all 0.3s linear;
+      }
     }
-    &__title {
-        font-weight: bold;
-        font-size: 28px;
-        line-height: 37px;
-        span {
-            color: $main-color;
+
+    span {
+      color: $main-color;
+    }
+  }
+
+  &__menu {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 32px;
+
+
+      .block__button {
+        padding: 4px 10px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: transparent 1px solid;
+        transition: all 0.3s linear;
+
+        &:hover {
+          background-color: $main-color-hover;
+          border: #fff 1px solid;
+          transition: all 0.3s linear;
         }
-    }
-    &__menu {
-        ul {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 32px;
-            li {
-                margin: 0 8px;
-                a:hover {
-                    color: $main-color;
-                }
-            }
+      }
+
+      li {
+        margin: 0 8px;
+
+        a:hover {
+          color: $main-color;
         }
+      }
     }
+  }
 }
