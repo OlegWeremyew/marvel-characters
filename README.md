@@ -7,10 +7,10 @@ Characters* можно выбрать случайного героя и по н
 
 ###### React(hooks)
 
-![socialNetwork](src/resources/img/marvelGif.gif)
+![marvelApp](src/resources/img/marvelGif.gif)
 
 ## Start locally
 
-1.Install all the dependencies. Use: "npm install" or "yarn"
+1.Install all the dependencies. Use: npm install
 
 2.Use npm start to start locally at localhost
