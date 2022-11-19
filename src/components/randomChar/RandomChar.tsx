@@ -8,10 +8,10 @@ import { Character } from './character';
 
 import { ErrorMessage, Spinner } from 'components';
 import mjolnir from 'resources/img/mjolnir.png';
-import { ICharacter } from 'types';
+import { ICharacter, Nullable } from 'types';
 
 export const RandomChar: FC = () => {
-  const [character, setCharacter] = useState<ICharacter | null>(null);
+  const [character, setCharacter] = useState<Nullable<ICharacter>>(null);
   const { loading, error, getCharacter, clearError } = useMarvelService();
 
   const onCharLoaded = (characterInfo: ICharacter) => {
