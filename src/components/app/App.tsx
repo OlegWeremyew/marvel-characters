@@ -3,13 +3,13 @@ import React, { FC, Suspense } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { RoutesEnum } from '../../enum';
-import AppHeader from '../appHeader/AppHeader';
+import { AppHeader } from '../appHeader';
 import { MainPage } from '../pages';
-import Spinner from '../spinner/Spinner';
+import { Spinner } from '../spinner';
 
 import { ComicsPage, SingleComicPage, Page404 } from './lazyComponents';
 
-const App: FC = () => (
+export const App: FC = () => (
   <Suspense fallback={<Spinner />}>
     <HashRouter>
       <div className="app">
@@ -26,5 +26,3 @@ const App: FC = () => (
     </HashRouter>
   </Suspense>
 );
-
-export default App;

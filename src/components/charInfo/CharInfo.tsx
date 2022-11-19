@@ -1,15 +1,15 @@
 import { useState, useEffect, FC } from 'react';
 
-import useMarvelService from '../../services/MarvelService';
+import { useMarvelService } from '../../services';
 import { ICharacter } from '../../types';
 import setContent from '../../utils/setContent';
 
 import './charInfo.scss';
 
-import charInfoView from './charInfoView/charInfoView';
+import { charInfoView } from './charInfoView';
 import { ICharInfo } from './types';
 
-const CharInfo: FC<ICharInfo> = ({ charId }) => {
+export const CharInfo: FC<ICharInfo> = ({ charId }) => {
   const [character, setCharacter] = useState<ICharacter>({} as ICharacter);
 
   const { getCharacter, clearError, process, setProcess } = useMarvelService();
@@ -35,5 +35,3 @@ const CharInfo: FC<ICharInfo> = ({ charId }) => {
 
   return <div className="char__info">{setContent(process, charInfoView, character)}</div>;
 };
-
-export default CharInfo;

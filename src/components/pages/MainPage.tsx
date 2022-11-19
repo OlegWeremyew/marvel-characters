@@ -4,12 +4,12 @@ import { Helmet } from 'react-helmet';
 
 import decoration from '../../resources/img/vision.png';
 import { Nullable } from '../../types';
-import CharInfo from '../charInfo/CharInfo';
+import { CharInfo } from '../charInfo';
 import CharList from '../charList/CharList';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
-import RandomChar from '../randomChar/RandomChar';
+import { RandomChar } from '../randomChar';
 
-const MainPage: FC = () => {
+export const MainPage: FC = () => {
   const [selectedChar, setChar] = useState<Nullable<number>>(null);
 
   const onCharSelected = (id: number) => {
@@ -37,5 +37,3 @@ const MainPage: FC = () => {
     </>
   );
 };
-
-export default MainPage;

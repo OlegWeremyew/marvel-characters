@@ -47,5 +47,3 @@ export const charInfoView: FC<ICharInfoView> = ({ data }) => {
     </>
   );
 };
-
-export default charInfoView;

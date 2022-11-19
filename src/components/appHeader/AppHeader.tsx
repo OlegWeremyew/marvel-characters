@@ -6,7 +6,7 @@ import './appHeader.scss';
 
 import { RoutesEnum } from '../../enum';
 
-const AppHeader: FC = () => (
+export const AppHeader: FC = () => (
   <header className="app__header">
     <h1 className="app__title">
       <Link to={RoutesEnum.MAIN_PAGE} className="title__button">
@@ -36,5 +36,3 @@ const AppHeader: FC = () => (
     </nav>
   </header>
 );
-
-export default AppHeader;

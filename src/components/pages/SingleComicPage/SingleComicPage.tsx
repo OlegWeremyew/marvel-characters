@@ -2,14 +2,14 @@ import { useState, useEffect, FC } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import useMarvelService from '../../../services/MarvelService';
-import ErrorMessage from '../../errorMessage/ErrorMessage';
-import Spinner from '../../spinner/Spinner';
+import { useMarvelService } from '../../../services';
+import { ErrorMessage } from '../../errorMessage';
+import { Spinner } from '../../spinner';
 
 import './singleComicPage.scss';
 import { TypeComicsList } from '../../../types';
 
-import ComicInfo from './ComicInfo/ComicInfo';
+import { ComicInfo } from './ComicInfo';
 
 const SingleComicPage: FC = () => {
   const { comicId } = useParams(); // приходит из url

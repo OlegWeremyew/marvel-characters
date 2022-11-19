@@ -7,7 +7,7 @@ import { RoutesEnum } from '../../../../enum';
 
 import { IView } from './types';
 
-const ComicInfo: FC<IView> = ({ comic }) => {
+export const ComicInfo: FC<IView> = ({ comic }) => {
   const { name, description, pageCount, image, price, language } = comic;
 
   return (
@@ -30,5 +30,3 @@ const ComicInfo: FC<IView> = ({ comic }) => {
     </div>
   );
 };
-
-export default ComicInfo;

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import ErrorMessage from '../errorMessage/ErrorMessage';
+import { ErrorMessage } from '../errorMessage';
 
 class ErrorBoundary extends Component {
   // eslint-disable-next-line react/state-in-constructor

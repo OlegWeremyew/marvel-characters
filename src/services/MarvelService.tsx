@@ -5,7 +5,7 @@ import { ICharacterFull, IComicsFull, Undetectable } from '../types';
 const apiBase = process.env.REACT_APP_BASE_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
 
-const useMarvelService = () => {
+export const useMarvelService = () => {
   const { loading, request, error, clearError, process, setProcess } = useHttp();
 
   const transformCharacter = (character: ICharacterFull) => ({
@@ -67,5 +67,3 @@ const useMarvelService = () => {
     getComic,
   };
 };
-
-export default useMarvelService;

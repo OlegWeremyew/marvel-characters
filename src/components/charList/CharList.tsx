@@ -2,12 +2,12 @@ import { useState, useEffect, useRef, FC } from 'react';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import useMarvelService from '../../services/MarvelService';
+import { useMarvelService } from '../../services';
 
 import './charList.scss';
 import { ICharacterFull, Nullable } from '../../types';
-import ErrorMessage from '../errorMessage/ErrorMessage';
-import Spinner from '../spinner/Spinner';
+import { ErrorMessage } from '../errorMessage';
+import { Spinner } from '../spinner';
 
 import { ICharList } from './types';
 

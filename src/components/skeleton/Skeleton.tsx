@@ -1,7 +1,7 @@
 import './skeleton.scss';
 import { FC } from 'react';
 
-const Skeleton: FC = () => (
+export const Skeleton: FC = () => (
   <>
     <p className="char__select">Please select a character to see information</p>
     <div className="skeleton">
@@ -15,5 +15,3 @@ const Skeleton: FC = () => (
     </div>
   </>
 );
-
-export default Skeleton;

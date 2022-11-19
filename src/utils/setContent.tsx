@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import ErrorMessage from '../components/errorMessage/ErrorMessage';
-import Skeleton from '../components/skeleton/Skeleton';
-import Spinner from '../components/spinner/Spinner';
+import { ErrorMessage } from '../components/errorMessage';
+import { Skeleton } from '../components/skeleton';
+import { Spinner } from '../components/spinner';
 import { ProcessEnum } from '../enum';
 import { ICharacter, TypeComponent } from '../types';
 

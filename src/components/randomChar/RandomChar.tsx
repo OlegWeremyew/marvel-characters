@@ -1,15 +1,15 @@
 import { useState, useEffect, FC } from 'react';
 
-import useMarvelService from '../../services/MarvelService';
+import { useMarvelService } from '../../services';
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 import { ICharacter } from '../../types';
-import ErrorMessage from '../errorMessage/ErrorMessage';
-import Spinner from '../spinner/Spinner';
+import { ErrorMessage } from '../errorMessage';
+import { Spinner } from '../spinner';
 
 import Character from './character/Character';
 
-const RandomChar: FC = () => {
+export const RandomChar: FC = () => {
   const [character, setCharacter] = useState<ICharacter | null>(null);
   const { loading, error, getCharacter, clearError } = useMarvelService();
 
@@ -53,5 +53,3 @@ const RandomChar: FC = () => {
     </div>
   );
 };
-
-export default RandomChar;

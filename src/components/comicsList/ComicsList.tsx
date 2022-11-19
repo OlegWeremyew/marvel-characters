@@ -2,13 +2,13 @@ import { FC, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import useMarvelService from '../../services/MarvelService';
+import { useMarvelService } from '../../services';
 import './comicsList.scss';
 import { TypeComicsList } from '../../types';
-import ErrorMessage from '../errorMessage/ErrorMessage';
-import Spinner from '../spinner/Spinner';
+import { ErrorMessage } from '../errorMessage';
+import { Spinner } from '../spinner';
 
-const ComicsList: FC = () => {
+export const ComicsList: FC = () => {
   const [comicsList, setComicsList] = useState<TypeComicsList[]>([] as TypeComicsList[]);
   const [newItemsLoading, setNewItemsLoading] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(0);
@@ -77,5 +77,3 @@ const ComicsList: FC = () => {
     </div>
   );
 };
-
-export default ComicsList;

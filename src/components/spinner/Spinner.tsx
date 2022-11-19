@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-const Spinner: FC = () => (
+export const Spinner: FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     style={{ margin: '0 auto', background: 'none', display: 'block' }}
@@ -195,5 +195,3 @@ const Spinner: FC = () => (
     </g>
   </svg>
 );
-
-export default Spinner;

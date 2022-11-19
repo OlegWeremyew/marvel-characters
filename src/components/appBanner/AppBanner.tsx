@@ -4,7 +4,7 @@ import { FC } from 'react';
 import avengers from '../../resources/img/Avengers.png';
 import avengersLogo from '../../resources/img/Avengers_logo.png';
 
-const AppBanner: FC = () => (
+export const AppBanner: FC = () => (
   <div className="app__banner">
     <img src={avengers} alt="Avengers" />
     <div className="app__banner-text">
@@ -15,5 +15,3 @@ const AppBanner: FC = () => (
     <img src={avengersLogo} alt="Avengers logo" />
   </div>
 );
-
-export default AppBanner;
