@@ -1,16 +1,20 @@
-# Приложение Marvel Informational Portal
+# Application Social-Network
 
-Реализовано с помощью *The Marvel Comics API*. Здесь собрана информация о комиксах и персонажах Марвел: в разделе *
-Characters* можно выбрать случайного героя и по нажатию на кнопку перейти на сторонний ресурс с более детальной
-информацией о нем. Конкретного персонажа можно найти в этом же разделе в списке, его данные появятся в панели справа. Во
-втором разделе *Comics* можно найти информацию о комиксах из списка.
+Implemented with *SamuraiJS Social Network API documentation*. This application is a social network in
+where you can chat with people, leave posts, find and add friends, etc.
+The *Profile* page provides information about the user, his records, status and contacts.
+On the *Chat* page, an online chat with other users registered on the site is available
+On the *News* page, users can post various articles that they find interesting to other people.
+On the *User* page, users can find new friends and add them to their contactor list.
 
 ###### React(hooks)
 
-![marvelApp](src/resources/img/marvelGif.gif)
+![marvelApp](src\assets\img\socialNetwork.png)
 
 ## Start locally
 
 1.Install all the dependencies. Use: "npm install" or "yarn"
 
-2.Use npm start to start locally at localhost
+2.Use "npm start" to start locally at localhost
+
+3.Use "npm start" test to start jest tests
