@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-import { ErrorMessage } from '../components/errorMessage';
-import { Skeleton } from '../components/skeleton';
-import { Spinner } from '../components/spinner';
-import { ProcessEnum } from '../enum';
-import { ICharacter, TypeComponent } from '../types';
+import { ProcessEnum } from 'enum';
+import { ICharacter, TypeComponent } from 'types';
 
-const setContent = (process: string, Component: TypeComponent, data: ICharacter) => {
+import { ErrorMessage, Skeleton, Spinner } from 'components';
+
+export const setContent = (
+  process: string,
+  Component: TypeComponent,
+  data: ICharacter,
+) => {
   switch (process) {
     case ProcessEnum.WAITING:
       return <Skeleton />;
@@ -20,5 +23,3 @@ const setContent = (process: string, Component: TypeComponent, data: ICharacter)
       throw new Error('Unexpected process state');
   }
 };
-
-export default setContent;

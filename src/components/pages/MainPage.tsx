@@ -2,12 +2,11 @@ import { FC, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
 
-import decoration from '../../resources/img/vision.png';
-import { Nullable } from '../../types';
-import { CharInfo } from '../charInfo';
-import CharList from '../charList/CharList';
-import ErrorBoundary from '../errorBoundary/ErrorBoundary';
-import { RandomChar } from '../randomChar';
+import { CharInfo, CharList, RandomChar } from 'components';
+import ErrorBoundary from 'components/errorBoundary/ErrorBoundary';
+
+import decoration from 'resources/img/vision.png';
+import { Nullable } from 'types';
 
 export const MainPage: FC = () => {
   const [selectedChar, setChar] = useState<Nullable<number>>(null);

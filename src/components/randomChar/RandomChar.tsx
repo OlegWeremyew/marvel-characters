@@ -1,13 +1,14 @@
 import { useState, useEffect, FC } from 'react';
 
-import { useMarvelService } from '../../services';
-import './randomChar.scss';
-import mjolnir from '../../resources/img/mjolnir.png';
-import { ICharacter } from '../../types';
-import { ErrorMessage } from '../errorMessage';
-import { Spinner } from '../spinner';
+import { useMarvelService } from 'services';
 
-import Character from './character/Character';
+import './randomChar.scss';
+
+import { Character } from './character';
+
+import { ErrorMessage, Spinner } from 'components';
+import mjolnir from 'resources/img/mjolnir.png';
+import { ICharacter } from 'types';
 
 export const RandomChar: FC = () => {
   const [character, setCharacter] = useState<ICharacter | null>(null);

@@ -2,16 +2,15 @@ import { useState, useEffect, useRef, FC } from 'react';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { useMarvelService } from '../../services';
+import { useMarvelService } from 'services';
 
 import './charList.scss';
-import { ICharacterFull, Nullable } from '../../types';
-import { ErrorMessage } from '../errorMessage';
-import { Spinner } from '../spinner';
+import { ICharacterFull, Nullable } from 'types';
+import { ErrorMessage, Spinner } from 'components';
 
 import { ICharList } from './types';
 
-const CharList: FC<ICharList> = ({ charId, onCharSelected }) => {
+export const CharList: FC<ICharList> = ({ charId, onCharSelected }) => {
   const [charList, setCharList] = useState<ICharacterFull[]>([] as ICharacterFull[]);
   const [newItemsLoading, setNewItemsLoading] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(210);
@@ -125,5 +124,3 @@ const CharList: FC<ICharList> = ({ charId, onCharSelected }) => {
     </div>
   );
 };
-
-export default CharList;

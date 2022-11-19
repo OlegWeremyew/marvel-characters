@@ -1,4 +1,4 @@
-import { ICharacter } from '../../../../types';
+import { ICharacter } from 'types';
 
 export interface IView {
   character: ICharacter;

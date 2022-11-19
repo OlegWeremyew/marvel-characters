@@ -2,8 +2,7 @@ import { FC } from 'react';
 
 import { Helmet } from 'react-helmet';
 
-import { AppBanner } from '../appBanner';
-import { ComicsList } from '../comicsList';
+import { AppBanner, ComicsList } from 'components';
 
 export const ComicsPage: FC = () => (
   <>

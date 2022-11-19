@@ -2,6 +2,17 @@
   "compilerOptions": {
     "target": "es5",
     "baseUrl": "src",
+    "paths": {
+      "components/*": ["./components/*"],
+      "constants/*": ["./constants/*"],
+      "enum/*": ["./enum/*"],
+      "hooks/*": ["./hooks/*"],
+      "resources/*": ["./resources/*"],
+      "services/*": ["./services/*"],
+      "style/*": ["./style/*"],
+      "types/*": ["./types/*"],
+      "utils/*": ["./utils/*"],
+    },
     "lib": [
       "dom",
       "dom.iterable",

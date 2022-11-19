@@ -2,12 +2,10 @@ import React, { FC, Suspense } from 'react';
 
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
-import { RoutesEnum } from '../../enum';
-import { AppHeader } from '../appHeader';
-import { MainPage } from '../pages';
-import { Spinner } from '../spinner';
-
 import { ComicsPage, SingleComicPage, Page404 } from './lazyComponents';
+
+import { AppHeader, MainPage, Spinner } from 'components';
+import { RoutesEnum } from 'enum';
 
 export const App: FC = () => (
   <Suspense fallback={<Spinner />}>

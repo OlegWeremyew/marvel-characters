@@ -1,8 +1,8 @@
 import { useState, useEffect, FC } from 'react';
 
-import { useMarvelService } from '../../services';
-import { ICharacter } from '../../types';
-import setContent from '../../utils/setContent';
+import { useMarvelService } from 'services';
+import { ICharacter } from 'types';
+import { setContent } from 'utils';
 
 import './charInfo.scss';
 

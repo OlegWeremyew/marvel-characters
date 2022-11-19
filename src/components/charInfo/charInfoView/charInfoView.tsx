@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { IComics } from '../../../types';
+import { IComics } from 'types';
 
 import { ICharInfoView } from './types';
 

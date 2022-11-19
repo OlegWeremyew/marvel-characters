@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
-import { RoutesEnum } from '../../../../enum';
+import { RoutesEnum } from 'enum';
 
 import { IView } from './types';
 

@@ -1,8 +1,8 @@
 import './appBanner.scss';
 import { FC } from 'react';
 
-import avengers from '../../resources/img/Avengers.png';
-import avengersLogo from '../../resources/img/Avengers_logo.png';
+import avengers from 'resources/img/Avengers.png';
+import avengersLogo from 'resources/img/Avengers_logo.png';
 
 export const AppBanner: FC = () => (
   <div className="app__banner">

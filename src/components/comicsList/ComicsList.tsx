@@ -2,11 +2,11 @@ import { FC, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { useMarvelService } from '../../services';
+import { useMarvelService } from 'services';
+
 import './comicsList.scss';
-import { TypeComicsList } from '../../types';
-import { ErrorMessage } from '../errorMessage';
-import { Spinner } from '../spinner';
+import { ErrorMessage, Spinner } from 'components';
+import { TypeComicsList } from 'types';
 
 export const ComicsList: FC = () => {
   const [comicsList, setComicsList] = useState<TypeComicsList[]>([] as TypeComicsList[]);

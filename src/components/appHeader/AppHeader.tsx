@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import './appHeader.scss';
 
-import { RoutesEnum } from '../../enum';
+import { RoutesEnum } from 'enum';
 
 export const AppHeader: FC = () => (
   <header className="app__header">

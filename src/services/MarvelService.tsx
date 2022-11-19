@@ -1,6 +1,6 @@
 import { baseOffset } from '../constants';
-import { useHttp } from '../hooks/http.hook';
-import { ICharacterFull, IComicsFull, Undetectable } from '../types';
+import { useHttp } from 'hooks';
+import { ICharacterFull, IComicsFull, Undetectable } from 'types';
 
 const apiBase = process.env.REACT_APP_BASE_URL;
 const apiKey = process.env.REACT_APP_API_KEY;

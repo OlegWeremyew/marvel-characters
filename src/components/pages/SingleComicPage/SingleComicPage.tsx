@@ -2,12 +2,11 @@ import { useState, useEffect, FC } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { useMarvelService } from '../../../services';
-import { ErrorMessage } from '../../errorMessage';
-import { Spinner } from '../../spinner';
+import { ErrorMessage, Spinner } from 'components';
+import { useMarvelService } from 'services';
 
 import './singleComicPage.scss';
-import { TypeComicsList } from '../../../types';
+import { TypeComicsList } from 'types';
 
 import { ComicInfo } from './ComicInfo';
 
